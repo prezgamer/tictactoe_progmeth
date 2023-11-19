@@ -19,16 +19,26 @@ int main() {
         return 1;
     } else //read the file
     {
-        printf("File can be read");
+        // printf("File can be read");
         // fprintf("\n %s", txtFile);
-        // char line[6];
-        // //char text[24906];  // Adjust the buffer size based on your needs
-        // while (fgets(line, 6, txtFile) != NULL) 
-        // {
-        //     // text[24906] = line[6];
-        //     // printf("%s",text);
-        //     printf("%s", line);
-        // }
+        char line[24];
+        //char text[24906];  // Adjust the buffer size based on your needs
+        while (fgets(line, 24, txtFile) != NULL) 
+        {
+            // text[24906] = line[6];
+            // printf("%s",text);
+            //printf("\n %c", line[18]);
+
+            
+
+
+            if (line[18] == 'p')
+            {
+                printf("\n [%d] it is positive" );
+            } else {
+                printf("\n [%d] it is negative" );
+            }
+        }
     }
 
 
