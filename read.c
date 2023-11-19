@@ -4,53 +4,57 @@
 #define MAX_ROWS 1000
 #define MAX_COLS 10
 
+#define totalDataSize 958
+#define trainingDataSize 766 //80%
+#define testingDataSize 192 //20%
+
 int main() {
+
     // Open the data file for reading
-    FILE *file = fopen("tic-tac-toe.csv", "r");
-    if (!file) {
-        fprintf(stderr, "Error opening the file.\n");
+    FILE *txtFile;
+    txtFile = fopen("C:/Users/Andrew Foo/Desktop/CSC1003 Programming Methology/tictactoe_progmeth/tictactoe.txt", "r");
+
+    if (txtFile==NULL) {
+        printf("\n file cannot be opened");
         return 1;
+    } else //read the file
+    {
+        printf("File can be read");
+        // fprintf("\n %s", txtFile);
+        // char line[6];
+        // //char text[24906];  // Adjust the buffer size based on your needs
+        // while (fgets(line, 6, txtFile) != NULL) 
+        // {
+        //     // text[24906] = line[6];
+        //     // printf("%s",text);
+        //     printf("%s", line);
+        // }
     }
 
-    // Declare variables to store data
-    float data[MAX_ROWS][MAX_COLS];
-    int numRows = 0, numCols = 0;
 
-    // Read data from the file
-    while (fscanf(file, "%f", &data[numRows][numCols]) == 1) {
-        numCols++;
-        if (numCols >= MAX_COLS) {
-            // Increase MAX_COLS if your data has more columns than expected
-            fprintf(stderr, "Too many columns in the data file.\n");
-            return 1;
-        }
 
-        // Check for newline to move to the next row
-        char ch = fgetc(file);
-        if (ch == '\n' || ch == EOF) {
-            numRows++;
-            numCols = 0;
+    //  char totalData1[] = 
+    //  {
+    //      "o,b,o,x,x,x,x,b,o,positive"
+    //  };
+    //  char totalData2[] = 
+    //  {
+    //      "o,b,o,x,x,x,x,b,o,negative"
+    //  };
+    // printf("Char: %s",totalData1);
+    // printf("Char: %s",totalData2);
+    // char trainingData[766];
+    // char testingData[192];
 
-            if (numRows >= MAX_ROWS) {
-                // Increase MAX_ROWS if your data has more rows than expected
-                fprintf(stderr, "Too many rows in the data file.\n");
-                return 1;
-            }
-        }
-    }
-
+    // for (int n = 0; n < totalDataSize; n++)
+    // {
+    //     fscanf(txtFile, totalData[n]);
+    //     printf("%s", totalData[n]);
+    // }
+    
+        
     // Close the file
-    fclose(file);
-
-    // Now you can use the 'data' array in your program
-
-    // Example: Print the data
-    for (int i = 0; i < numRows; ++i) {
-        for (int j = 0; j < numCols; ++j) {
-            printf("%f ", data[i][j]);
-        }
-        printf("\n");
-    }
+    fclose(txtFile);
 
     return 0;
 }
