@@ -23,8 +23,8 @@ int main()
         return 1; // Return an error code
     }
     
-    char *xValue[] = { }; //declare an empty pointer
-    char *yValue[] = { };
+    int xValue[950];
+    int yValue[950];
 
     char line[100]; // Assuming a maximum line length of 100 characters
     char *token;
@@ -48,25 +48,43 @@ int main()
             token = strtok(NULL, separator);
         }
 
+        //check for the x elements
         // Print 'x' elements
-        printf("x: ");
+        printf("\n x: ");
         for (int j = 0; j < i; ++j) {
-            printf("%s, ", x_elements[j]);
-            
+
+            if (strcmp(x_elements[j],"x") == 0)
+            {
+                xValue[0] = 1;
+                printf("\n xValue: %d",xValue[0]);
+            } 
+            else if (strcmp(x_elements[j],"o") == 0)
+            {
+                xValue[0] = -1;
+                printf("\n xValue: %d",xValue[0]);
+            } else if (strcmp(x_elements[j],"b") == 0)
+            {
+                xValue[0] = 0;
+                printf("\n xValue: %d",xValue[0]);
+            }
         }
+
+        //printf("\n y: %s", result);
 
         // Print result
-        
-        //printf("\ty: %s", result);
-
-    }
-
-        for (int a = 0; a < 958; a++)
+        if (strcmp(result,"positive") == 0)
         {
-            printf("\n %d", a);
-            yValue[a] = result;
-            printf("\n %s", yValue[a]);
+            yValue[0] = 1;
+            printf("\n y: %d", yValue[0]);
+        } 
+        else if (strcmp(result,"negative") == 0) 
+        {
+            yValue[0] = -1;
+            printf("\n y: %d", yValue[0]);
+        } else {
+            printf("\n y: Unable to print");
         }
+    }
 
     // Close the file
     fclose(file);
